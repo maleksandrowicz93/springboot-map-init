@@ -27,7 +27,7 @@ public class Covid19Parser {
         for (CSVRecord strings : parse) {
             double lat = Double.parseDouble(strings.get("Lat"));
             double lon = Double.parseDouble(strings.get("Long"));
-            String text = strings.get("29/15/20");
+            String text = strings.get("3/29/20");
             points.add(new Point(lat, lon, text));
         }
 
