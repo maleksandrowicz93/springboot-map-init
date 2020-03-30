@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,16 +18,18 @@
 
 <div id="mapid"></div>
 
-<script>
+<script th:inline="javascript">
 
-    var map = L.map('mapid').setView([51.11, 17.08], 12);
+    var point = [[${point}]];
+
+    var map = L.map('mapid').setView([point.lat, point.lon], 12);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker([51.11, 17.08]).addTo(map)
-        .bindPopup('Hello everybody!')
+    L.marker([point.lat, point.lon]).addTo(map)
+        .bindPopup(point.text)
         .openPopup();
 
 </script>
